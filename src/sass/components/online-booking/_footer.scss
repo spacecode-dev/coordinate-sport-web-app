@@ -1,0 +1,31 @@
+.back-to-top {
+	display: block;
+	background:$black;
+	color:$white !important;
+	cursor: default;
+	text-decoration: underline;
+	height:rem-calc(40);
+	width:rem-calc(40);
+	line-height: rem-calc(40);
+	text-align: center;
+	position: fixed;
+	bottom:rem-calc(10);
+	right:rem-calc(10);
+	z-index: 10;
+	opacity: 0;
+	border-radius:rem-calc(3);
+	transition:opacity .25s;
+	&.show {
+		transition:opacity .25s;
+		opacity: .4;
+		cursor:pointer;
+		&:hover {
+			opacity: 1;
+			transition:opacity .25s;
+		}
+	}
+	@media (min-width: $screen-sm-min) {
+		bottom:rem-calc(20);
+		right:rem-calc(20);
+	}
+}

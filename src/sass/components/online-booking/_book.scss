@@ -1,0 +1,412 @@
+body .fancy-checkbox {
+	padding-left:0;
+	> input[type="checkbox"],
+	> .checked,
+	> .disabled,
+	> .participants {
+    	display: none;
+	}
+
+	&.disabled {
+		color:$red;
+		cursor: not-allowed;
+	}
+
+	i {
+		font-size: 1.2em;
+		cursor: pointer;
+	}
+
+	> input[type="checkbox"]:checked ~ .checked {
+	    display: inline-block;
+	}
+
+	> input[type="checkbox"]:checked ~ .unchecked	{
+	    display: none;
+	}
+
+	> input[type="checkbox"]:checked ~ .participants {
+		display: block;
+	}
+}
+
+.flex {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	flex-wrap: wrap;
+	.flex-middle {
+		align-self:center;
+	}
+	&.nowrap {
+		-webkit-flex-wrap: nowrap;
+		flex-wrap: nowrap;
+	}
+	.order-1 {
+		order:1;
+	}
+	.order-2 {
+		order:2;
+	}
+	@media (min-width: $screen-sm-min) {
+		.order-sm-1 {
+			order:1;
+		}
+		.order-sm-2 {
+			order:2;
+		}
+		&.sm-nowrap {
+			-webkit-flex-wrap: nowrap;
+			flex-wrap: nowrap;
+		}
+	}
+}
+
+body .past-sessions {
+	color:$grey;
+	.panel-heading a, .panel-body, .price, h2, .event-specs, i {
+		color:$grey;
+	}
+}
+
+.panel-group {
+	.panel {
+		border-radius:0;
+		box-shadow:none;
+		& + .panel {
+			margin:0;
+			border-top:0;
+		}
+		&.in-past {
+			.panel-heading {
+				a {
+					color:$mid-grey;
+				}
+			}
+		}
+		.panel-heading {
+			padding:0;
+			background:$white;
+			a {
+				padding:rem-calc(10) rem-calc(15);
+				display: block;
+				text-decoration: none;
+				&:before {
+					font-family: 'Font Awesome 5 Pro';
+					content:'\f068';
+					margin-right: rem-calc(5);
+				}
+				&.collapsed {
+					&:before {
+						content:'\f067';
+					}
+				}
+			}
+		}
+	}
+}
+
+.price, .discounted_price {
+	font-size:rem-calc(18);
+	font-weight: $font-weight-semibold;
+	color:$black;
+	@media (max-width: $screen-sm-max) {
+		font-size:rem-calc(16);
+	}
+	&.discounted, &.discounted_samesize {
+		color:$red;
+		text-decoration: line-through;
+		font-weight: $font-weight-normal;
+	}
+	&.discounted {
+		font-size:rem-calc(16);
+		@media (max-width: $screen-sm-max) {
+			font-size:rem-calc(14);
+		}
+	}
+}
+
+.subscriptions > div {
+	display: none;
+}
+
+#step2 {
+	display: none;
+}
+
+#sessions {
+	&.single-participant {
+		.lesson:not(.all-disabled) {
+			.fancy-checkbox {
+				.participants {
+					display: none;
+				}
+			}
+		}
+	}
+
+	.upsell {
+		display: none;
+	}
+
+	table.sessions {
+		margin-bottom: 0;
+		thead {
+			background:$dark-grey;
+			color:$white;
+			th {
+				border-left:rem-calc(3) solid $white;
+				border-bottom: 0;
+				&:first-child {
+					border-left:0;
+				}
+			}
+		}
+		tbody {
+			th {
+				vertical-align: middle;
+				text-align: center;
+				font-size:rem-calc(18);
+				font-weight: $font-weight-normal;
+				@media (max-width: $screen-sm-max) {
+					font-size:rem-calc(16);
+				}
+			}
+			td {
+				vertical-align: middle;
+				&.sold-out {
+					color:$red;
+				}
+				&.in-past {
+					color:$mid-grey;
+				}
+				&.lesson.all-disabled {
+					.fancy-checkbox {
+						> input[type="checkbox"]:checked ~ .checked {
+						    display: none
+						}
+						> input[type="checkbox"]:checked ~ .disabled {
+						    display: inline-block;
+							color:$red;
+							cursor: not-allowed;
+						}
+					}
+				}
+				.fancy-checkbox {
+					margin:0;
+				}
+			}
+		}
+		th[scope] {
+			cursor: pointer;
+		}
+		&[data-require_all_sessions="1"] {
+			.price, .discounted_price {
+				display: none;
+			}
+		}
+		@media (max-width: $screen-sm-max) {
+			thead {
+				display: none;
+			}
+			table, tbody, tr, th, td {
+				display: block;
+			}
+			td {
+				display: flex;
+				text-align: center;
+				&:before {
+					content: attr(data-title);
+					width:40%;
+					border-right:rem-calc(1) solid $grey;
+					align-self:center;
+					cursor: pointer;
+				}
+				padding-right: rem-calc(8);
+				> .fancy-checkbox, > span {
+					display: block;
+					flex-grow:1;
+					padding-left: rem-calc(8);
+					margin:0;
+				}
+				&.no-lesson {
+					display:none;
+				}
+			}
+		}
+		+ p {
+			margin:rem-calc(10) auto 0;
+			.or_time {
+				@media (max-width: $screen-sm-max) {
+					display: none;
+				}
+			}
+		}
+	}
+
+	.alert {
+		margin: rem-calc(10) 0 0;
+	}
+
+	.block_totals {
+		float: right;
+		text-align: right;
+		span {
+			font-size:inherit;
+		}
+	}
+}
+
+
+.summary {
+	.totals {
+		font-size:rem-calc(18);
+	}
+}
+
+.cart, .checkout {
+	.cart-item {
+		margin-bottom: rem-calc(20);
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+	.boxed {
+		border:rem-calc(1) solid $light-grey;
+		padding:rem-calc(20);
+		background:$white;
+		h2 {
+			margin-top:0;
+		}
+	}
+	.remove {
+		color:$red;
+		margin:0 0 rem-calc(2) rem-calc(2);
+		display: inline-block;
+		float: right;
+		line-height: 1em;
+	}
+	.summary {
+		.row {
+			padding:rem-calc(5) 0;
+		}
+		.remove {
+			margin:rem-calc(5) 0 0;
+			float: none;
+		}
+		.total {
+			&:before {
+				content:'';
+				display: block;
+				margin:0 rem-calc(15) rem-calc(10);
+				width:calc(100% - 30px);
+				border-top:rem-calc(1) solid $light-grey;
+			}
+		}
+		.remove {
+			color:$grey;
+		}
+	}
+	.notices {
+		.notice {
+			display: none;
+		}
+	}
+	.vouchers {
+		.form-group {
+			margin:0;
+			.form-control {
+				width:100%;
+				text-transform: uppercase;
+			}
+		}
+		button {
+			width:auto;
+			&.btn-fixed-height {
+				height: rem-calc(34);
+			}
+			margin-left:rem-calc(5);
+		}
+		ul {
+			list-style:none;
+			font-weight: $font-weight-bold;
+			padding:0;
+			margin:rem-calc(10) 0 0;
+			i {
+				color:$red;
+			}
+			span {
+				font-weight: $font-weight-normal;
+			}
+		}
+	}
+}
+
+.cart, .booking {
+	.intro {
+		margin-bottom: rem-calc(20);
+		img {
+			max-width: 100%;
+		}
+	}
+	.panel-body {
+		color:$black;
+		.date {
+			border-bottom:rem-calc(1) solid $light-grey;
+			padding:rem-calc(15) 0;
+			line-height: 2;
+			.right {
+				@media (min-width: $screen-sm-min) {
+					text-align: right;
+				}
+			}
+			.far {
+				font-size:rem-calc(18);
+			}
+			&:first-child {
+				padding-top:0;
+			}
+			&:last-child {
+				border-bottom: 0;
+				padding-bottom: 0;
+			}
+		}
+	}
+}
+
+#monitoring {
+	tbody {
+		th {
+			white-space: normal;
+		}
+	}
+	td.has_checkbox {
+		text-align: center;
+		vertical-align: middle;
+	}
+	@media (max-width: $screen-xs-max) {
+		th, td {
+			min-width:120px;
+		}
+	}
+}
+
+.alert-success {
+	.btn {
+		margin-top:8px;
+	}
+}
+
+td {
+	&.red {
+		background:rgba($red, .25);
+	}
+	&.orange {
+		background:rgba($orange, .25);
+	}
+	&.green {
+		background:rgba($green, .25);
+	}
+}

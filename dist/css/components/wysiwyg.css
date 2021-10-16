@@ -1,0 +1,30 @@
+body, td, th, pre, p, table, ul, li, ol {
+  font-size: 13px;
+  font-family: sans-serif;
+  text-align: left;
+  font-weight: 400;
+  color: #464E5F; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0; }
+  table.no-border td, table.no-border th {
+    border: 0; }
+
+td, th {
+  border: 1px solid #CCC;
+  padding: 5px; }
+
+.right {
+  text-align: right; }
+
+.no-bottom-margin {
+  margin-bottom: 0; }
+
+.no-left-padding {
+  padding-bottom: 0; }
+
+.hr {
+  border-top: 1px solid #CCC;
+  margin: 15px 0; }

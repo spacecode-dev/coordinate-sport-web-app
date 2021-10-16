@@ -1,0 +1,229 @@
+@import "vars";
+
+.fuelux .wizard {
+	*zoom: 1;
+	position: relative;
+	min-height: 48px;
+	.steps-container {
+		border-radius: 4px 4px 0 0;
+		margin-bottom: 20px;
+		display: flex;
+		align-items: center;
+		position: relative;
+		overflow: none;
+		justify-content: center;
+		width: 100%;
+		&.minimize{
+			position: fixed;
+			z-index: 1;
+			top: 0;
+			width: calc(100% - 230px - 15px);
+			background-color: $white;
+			padding: 20px 0;
+			ul.steps {
+				li{
+					font-size: 14px;
+					transition: all .2s;
+					&.active{
+						font-size: 16px;
+					}
+					&.new-content{
+						i{
+							font-size: 18px;
+						}
+					}
+					.title{
+						i{
+							width: 40px;
+							height: 40px;
+							transition: all .2s;
+						}
+					}
+				}
+			}
+		}
+		ul.steps {
+			list-style: none outside none;
+			padding: 0;
+			display: flex;
+			margin: 0 auto !important;
+			overflow: auto;
+
+			li{
+				flex-shrink: 0;
+				background: none;
+				font-family: "Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+				font-size: 16px;
+				display: flex;
+				align-items: flex-start;
+				justify-content: center;
+				color: #999999;
+				float: left;
+				margin: 0;
+				padding: 0;
+				position: relative;
+				cursor: pointer;
+				font-weight: 500;
+				&:not(.active){
+					opacity: .6;
+				}
+				&[data-role="ah"] {
+					.remove{
+						left: 33%;
+					}
+				}
+				&[data-role="p"] {
+					.badge{
+						background-color: $participant-badge-color;
+					}
+				}
+				&.new-content{
+					font-size: 15px;
+					margin-right: 30px;
+					opacity: 1;
+					&.add-ah{
+						i{
+							background-color: #00acec;
+						}
+					}
+					&:hover{
+						color: #333333 !important;
+					}
+					&:last-child{
+						margin-right: 0;
+					}
+					i {
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						width: 50px;
+						height: 50px;
+						border-radius: 50%;
+						background-color: $participant-badge-color;
+						font-size: 25px;
+						margin-bottom: 20px;
+						color: $white;
+					}
+				}
+				&.complete {
+					background: none;
+					color: #999999;
+					&:hover {
+						background: none;
+						cursor: pointer;
+					}
+				}
+				&.active {
+					background: none;
+					color: #333333;
+					cursor: default;
+					font-size: 18px;
+				}
+				&:not(.new-content):after{
+					content: '';
+					position: relative;
+					border-bottom: 2px solid #ccc;
+					width: 80px;
+					margin-top: 24px;
+				}
+				&:before{
+					content: none;
+				}
+				&:first-child {
+					border-radius: 4px 0 0 0;
+					padding-left: 20px;
+				}
+				.title{
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					justify-content: center;
+					flex-shrink: 0;
+				}
+				a{
+					text-decoration: none;
+				}
+				.remove{
+					background-color: $red;
+					font-size: 8px;
+					width: 12px;
+					height: 12px;
+					border-radius: 50%;
+					position: absolute;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					top:0;
+					left: 30%;
+					color: $white;
+					text-decoration: none;
+					i{
+						color: $white;
+							font-size: .8rem;
+					}
+				}
+				.badge {
+					width: 50px;
+					height: 50px;
+					border-radius: 50%;
+					background-color: $account-holder-badge-color;
+					margin-bottom: 20px;
+					margin-right: 8px;
+				}
+				.badge-success {
+					background-color: $participant-badge-color;
+				}
+			}
+		}
+	}
+	.step-content{
+		float: left;
+		width: 100%;
+		position: relative;
+		.step-pane {
+			display: none;
+		}
+		> .active {
+			display: block;
+		}
+		.alert + .card {
+			margin-top:0;
+		}
+	}
+}
+
+#overlay {
+	background: rgba(0,0,0,0.4);
+	color: $white;
+	position: absolute;
+	height: calc(100% - 20px);
+	width: 100%;
+	z-index: 5000;
+	left: 0;
+	float: left;
+	text-align: center;
+	padding-top: 25%;
+	opacity: .80;
+	font-weight: 700;
+	.spinner {
+		margin: 0 auto;
+		height: 64px;
+		width: 64px;
+		animation: rotate 0.8s infinite linear;
+		border: 5px solid $white;
+		border-right-color: transparent;
+		border-radius: 50%;
+	}
+}
+
+@keyframes rotate {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+.ui-datepicker{
+	z-index: 12 !important;
+}

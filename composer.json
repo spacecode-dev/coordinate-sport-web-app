@@ -1,0 +1,19 @@
+{
+    "require": {
+        "aws/aws-sdk-php": "^3.1",
+        "eluceo/ical": "^0.16",
+        "drewm/mailchimp-api": "^2.2",
+        "dompdf/dompdf": "^0.8.0",
+        "stripe/stripe-php": "^7.0",
+        "gocardless/gocardless-pro": "^4.0",
+        "phpoffice/phpspreadsheet": "^1.10",
+        "fzaninotto/faker": "^1.8",
+        "guzzlehttp/guzzle": "^6.3",
+        "donatj/simplecalendar": "^0.6.2",
+        "geokit/geokit": "^1.3",
+        "eurolink/sagepay-form-php": "^1.0",
+        "matthiasmullie/minify": "^1.3",
+        "asika/autolink": "^1.1",
+        "lightsaml/lightsaml": "^1.4"
+    }
+}

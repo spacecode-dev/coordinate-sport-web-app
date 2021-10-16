@@ -1,0 +1,226 @@
+.fuelux .wizard {
+  *zoom: 1;
+  position: relative;
+  min-height: 48px; }
+  .fuelux .wizard .steps-container {
+    border-radius: 4px 4px 0 0;
+    margin-bottom: 20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: relative;
+    overflow: none;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 100%; }
+    .fuelux .wizard .steps-container.minimize {
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      width: calc(100% - 230px - 15px);
+      background-color: #FFF;
+      padding: 20px 0; }
+      .fuelux .wizard .steps-container.minimize ul.steps li {
+        font-size: 14px;
+        -webkit-transition: all .2s;
+        transition: all .2s; }
+        .fuelux .wizard .steps-container.minimize ul.steps li.active {
+          font-size: 16px; }
+        .fuelux .wizard .steps-container.minimize ul.steps li.new-content i {
+          font-size: 18px; }
+        .fuelux .wizard .steps-container.minimize ul.steps li .title i {
+          width: 40px;
+          height: 40px;
+          -webkit-transition: all .2s;
+          transition: all .2s; }
+    .fuelux .wizard .steps-container ul.steps {
+      list-style: none outside none;
+      padding: 0;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      margin: 0 auto !important;
+      overflow: auto; }
+      .fuelux .wizard .steps-container ul.steps li {
+        -ms-flex-negative: 0;
+        flex-shrink: 0;
+        background: none;
+        font-family: "Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size: 16px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: start;
+        -ms-flex-align: start;
+        align-items: flex-start;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        color: #999999;
+        float: left;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        cursor: pointer;
+        font-weight: 500; }
+        .fuelux .wizard .steps-container ul.steps li:not(.active) {
+          opacity: .6; }
+        .fuelux .wizard .steps-container ul.steps li[data-role="ah"] .remove {
+          left: 33%; }
+        .fuelux .wizard .steps-container ul.steps li[data-role="p"] .badge {
+          background-color: #379e51; }
+        .fuelux .wizard .steps-container ul.steps li.new-content {
+          font-size: 15px;
+          margin-right: 30px;
+          opacity: 1; }
+          .fuelux .wizard .steps-container ul.steps li.new-content.add-ah i {
+            background-color: #00acec; }
+          .fuelux .wizard .steps-container ul.steps li.new-content:hover {
+            color: #333333 !important; }
+          .fuelux .wizard .steps-container ul.steps li.new-content:last-child {
+            margin-right: 0; }
+          .fuelux .wizard .steps-container ul.steps li.new-content i {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #379e51;
+            font-size: 25px;
+            margin-bottom: 20px;
+            color: #FFF; }
+        .fuelux .wizard .steps-container ul.steps li.complete {
+          background: none;
+          color: #999999; }
+          .fuelux .wizard .steps-container ul.steps li.complete:hover {
+            background: none;
+            cursor: pointer; }
+        .fuelux .wizard .steps-container ul.steps li.active {
+          background: none;
+          color: #333333;
+          cursor: default;
+          font-size: 18px; }
+        .fuelux .wizard .steps-container ul.steps li:not(.new-content):after {
+          content: '';
+          position: relative;
+          border-bottom: 2px solid #ccc;
+          width: 80px;
+          margin-top: 24px; }
+        .fuelux .wizard .steps-container ul.steps li:before {
+          content: none; }
+        .fuelux .wizard .steps-container ul.steps li:first-child {
+          border-radius: 4px 0 0 0;
+          padding-left: 20px; }
+        .fuelux .wizard .steps-container ul.steps li .title {
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-orient: vertical;
+          -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+          flex-direction: column;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          align-items: center;
+          -webkit-box-pack: center;
+          -ms-flex-pack: center;
+          justify-content: center;
+          -ms-flex-negative: 0;
+          flex-shrink: 0; }
+        .fuelux .wizard .steps-container ul.steps li a {
+          text-decoration: none; }
+        .fuelux .wizard .steps-container ul.steps li .remove {
+          background-color: #e20700;
+          font-size: 8px;
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          position: absolute;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          align-items: center;
+          -webkit-box-pack: center;
+          -ms-flex-pack: center;
+          justify-content: center;
+          top: 0;
+          left: 30%;
+          color: #FFF;
+          text-decoration: none; }
+          .fuelux .wizard .steps-container ul.steps li .remove i {
+            color: #FFF;
+            font-size: .8rem; }
+        .fuelux .wizard .steps-container ul.steps li .badge {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          background-color: #BA88E2;
+          margin-bottom: 20px;
+          margin-right: 8px; }
+        .fuelux .wizard .steps-container ul.steps li .badge-success {
+          background-color: #379e51; }
+  .fuelux .wizard .step-content {
+    float: left;
+    width: 100%;
+    position: relative; }
+    .fuelux .wizard .step-content .step-pane {
+      display: none; }
+    .fuelux .wizard .step-content > .active {
+      display: block; }
+    .fuelux .wizard .step-content .alert + .card {
+      margin-top: 0; }
+
+#overlay {
+  background: rgba(0, 0, 0, 0.4);
+  color: #FFF;
+  position: absolute;
+  height: calc(100% - 20px);
+  width: 100%;
+  z-index: 5000;
+  left: 0;
+  float: left;
+  text-align: center;
+  padding-top: 25%;
+  opacity: .80;
+  font-weight: 700; }
+  #overlay .spinner {
+    margin: 0 auto;
+    height: 64px;
+    width: 64px;
+    -webkit-animation: rotate 0.8s infinite linear;
+    animation: rotate 0.8s infinite linear;
+    border: 5px solid #FFF;
+    border-right-color: transparent;
+    border-radius: 50%; }
+
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+@keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+.ui-datepicker {
+  z-index: 12 !important; }

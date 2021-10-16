@@ -1,0 +1,37 @@
+// colours
+$white: #FFF;
+$red: #e20700;
+$black: #020202;
+$darker-grey: #555;
+$dark-grey: #7a7a7a;
+$grey: #929292;
+$mid-grey: #cecece;
+$light-grey: #e5e5e5;
+$lighter-grey: #f5f5f5;
+$green: #00a33e;
+$yellow: #e5a800;
+$red: #e20700;
+$orange: #f7931e;
+
+// weights
+$font-weight-normal: 400;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-black: 900;
+
+// sizes
+$screen-xs-max: 767px;
+$screen-sm-min: 768px;
+$screen-sm-max: 991px;
+$screen-md-min: 992px;
+$screen-md-max: 1199px;
+$screen-lg-min: 1200px;
+
+$base-font-size: 14;
+
+$fa-font-path: '/dist/plugins/global/fonts/@fortawesome/';
+
+@function rem-calc($size) {
+	$rem-size: $size / $base-font-size;
+	@return #{$rem-size}rem;
+}

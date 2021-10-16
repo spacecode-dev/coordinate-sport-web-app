@@ -1,0 +1,247 @@
+@import "online-booking/vars";
+@import "../../../node_modules/@fortawesome/fontawesome-pro/scss/fontawesome";
+@import "../../../node_modules/@fortawesome/fontawesome-pro/scss/regular";
+@import "../../../node_modules/@fortawesome/fontawesome-pro/scss/solid";
+@import "../plugins/bootstrap3/bootstrap";
+@import "../../../node_modules/magnific-popup/src/css/main";
+@import "../../../node_modules/select2/src/scss/core";
+@import "../../../node_modules/select2-bootstrap-theme/dist/select2-bootstrap";
+@import "../../../node_modules/jquery-ui-dist/jquery-ui";
+@import "../plugins/jquery-ui/icons";
+@import "online-booking/header";
+@import "online-booking/content";
+@import "online-booking/book";
+@import "online-booking/calendar";
+@import "online-booking/footer";
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,400i,600,700,900');
+
+html {
+	font-size:#{$base-font-size}px;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+	line-height: 1.7;
+	color: $dark-grey;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	color:$black;
+	font-weight: $font-weight-black;
+	text-transform: uppercase;
+	&.with-line {
+		border-bottom:rem-calc(1) solid $grey;
+		padding-bottom: rem-calc(10);
+	}
+	&.light {
+		font-weight:$font-weight-semibold;
+		text-transform: none;
+	}
+	a {
+		color:inherit;
+		text-decoration: none;
+		&:hover, &:focus {
+			color:$dark-grey;
+			text-decoration: none;
+		}
+	}
+}
+
+.semibold {
+	font-weight: $font-weight-semibold;
+}
+
+a {
+	color:$grey;
+	transition: color .25s, background-color .25s;
+	&:hover, &:focus {
+		color:$dark-grey;
+		transition: color .25s, background-color .25s;
+	}
+}
+
+.btn {
+	text-transform: uppercase;
+	background:$black;
+	color:$white;
+	font-size:rem-calc(15);
+	transition: color .25s, background-color .25s, border-color .25s;
+	&:hover, &:focus {
+		background:$dark-grey;
+		color:$white;
+		transition: color .25s, background-color .25s, border-color .25s;
+	}
+	&.btn-small {
+		font-size:rem-calc(13);
+		padding:rem-calc(0) rem-calc(4);
+	}
+	&.btn-hollow {
+		border-color:$black;
+		background:none;
+		color:$black;
+		font-weight: $font-weight-semibold;
+		text-transform: none;
+		&:hover, &:focus {
+			background:$dark-grey;
+			border-color:$dark-grey;
+			color:$white;
+		}
+	}
+	&.btn-lg {
+		font-size:rem-calc(18);
+	}
+	&.btn-red {
+		background:$red;
+		&:hover, &:focus {
+			background:$dark-grey;
+		}
+	}
+}
+
+.flex {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	flex-wrap: wrap;
+	.flex-middle {
+		align-self:center;
+	}
+	&.nowrap {
+		-webkit-flex-wrap: nowrap;
+		flex-wrap: nowrap;
+	}
+}
+
+body .container {
+	width:1200px;
+	max-width: 100%;
+}
+
+@media (min-width: $screen-md-min) {
+	.col-md-fifth {
+		width:20%;
+	}
+}
+
+.btn, .form-control {
+	border-radius:rem-calc(3);
+}
+
+.form-control, .select2-container--bootstrap .select2-selection {
+	border-color:$grey;
+}
+
+label {
+	font-weight: $font-weight-normal;
+	margin-bottom: rem-calc(3);
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+.pagination {
+	margin:0;
+	> li {
+		> span, > a {
+			border-color:$dark-grey;
+			color:$black;
+			&:hover, &:focus {
+				border-color: $dark-grey;
+				background:$dark-grey;
+				color:$white;
+			}
+		}
+	}
+}
+
+label {
+	em {
+		color:$red;
+		font-style: normal;
+	}
+}
+
+textarea.form-control {
+	height: rem-calc(110);
+}
+
+.select2-container {
+	max-width: 100%;
+}
+
+.terms_box {
+	max-height: rem-calc(300);
+	overflow-y: auto;
+	border:1px solid $grey;
+	padding:rem-calc(15);
+	margin-bottom: rem-calc(10);
+	h4 {
+		margin-top:0;
+	}
+	> *:last-child {
+		margin-bottom:0;
+	}
+}
+
+#postcode {
+	text-transform: uppercase;
+}
+
+body .mfp-iframe-holder .mfp-content {
+	width: 100%;
+	max-width: rem-calc(400);
+	height: 90%;
+	max-height: rem-calc(700);
+	@media (max-width: $screen-sm-max) {
+		height: 100%;
+	}
+}
+
+body.lightbox {
+	overflow-x: hidden;
+	margin:rem-calc(15);
+}
+
+.panel-collapse.collapse[style*="height: 0px;"]  {
+	display: none !important;
+}
+
+.profile {
+	.gender.form-group {
+		div {
+			display: flex;
+			.select2 {
+				width: 100% !important;
+			}
+			#gender_specify {
+				margin-left: 8px;
+			}
+		}
+	}
+	.religion.form-group {
+		div {
+			display: flex;
+			.select2 {
+				width: 100% !important;
+			}
+			#religion_specify {
+				margin-left: 8px;
+			}
+		}
+	}
+	.sexual_orientation.form-group {
+		div {
+			display: flex;
+			.select2 {
+				width: 100% !important;
+			}
+			#sexual_orientation_specify {
+				margin-left: 8px;
+			}
+		}
+	}
+}

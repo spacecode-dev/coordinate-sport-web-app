@@ -1,0 +1,110 @@
+image: php:7.3
+definitions:
+  steps:
+    - step: &Tests
+        name: Tests
+        script:
+          - echo "Run unit tests (future)"
+    - step: &Build-deploy
+        name: Build and Deploy
+        caches:
+          - composer
+          - node
+        script:
+          - curl -sL https://deb.nodesource.com/setup_12.x | bash -
+          - apt-get update && apt-get install -y zip unzip  nodejs git
+          - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+          - composer install --ignore-platform-reqs
+          - npm install -g yarn
+          - npm install -g gulp-cli
+          - yarn
+          - gulp
+          - zip -r application.zip . -x "node_modules/*" ".git/*" "src/*"
+          - TIMESTAMP=`date +%s`
+          - pipe: atlassian/aws-elasticbeanstalk-deploy:0.6.2
+            variables:
+              AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+              AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+              AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+              APPLICATION_NAME: $APPLICATION_NAME
+              ENVIRONMENT_NAME: $ENVIRONMENT_NAME
+              VERSION_LABEL: ${APPLICATION_NAME}-${BITBUCKET_BUILD_NUMBER}-${BITBUCKET_COMMIT:0:8}-$TIMESTAMP
+              ZIP_FILE: 'application.zip'
+              S3_BUCKET: $S3_BUCKET
+    - step: &Reset-DB-1
+        name: Reset Database
+        trigger: manual
+        script:
+          - apt-get update && apt-get install -y default-mysql-client wget
+          # Export from Staging DB
+          - mysqldump -h $RDS_SRC_HOST -u $RDS_SRC_USER -p$RDS_SRC_PW --skip-comments ebdb > dump.sql
+          # Import to Testing DB
+          - mysql -h $RDS_DEST_HOST -u $RDS_DEST_USER -p$RDS_DEST_PW ebdb < dump.sql
+    - step: &Reset-DB-2
+        name: Reset Database
+        trigger: manual
+        script:
+          - apt-get update && apt-get install -y default-mysql-client wget
+          # Export from Staging DB
+          - mysqldump -h $RDS_SRC_HOST -u $RDS_SRC_USER -p$RDS_SRC_PW --skip-comments ebdb > dump.sql
+          # Import to Testing 2 DB
+          - mysql -h $RDS_DEST_HOST_TESTING_2 -u $RDS_DEST_USER -p$RDS_DEST_PW ebdb < dump.sql
+    - step: &Reset-DB-3
+        name: Reset Database
+        trigger: manual
+        script:
+          - apt-get update && apt-get install -y default-mysql-client wget
+          # Export from Staging DB
+          - mysqldump -h $RDS_SRC_HOST -u $RDS_SRC_USER -p$RDS_SRC_PW --skip-comments ebdb > dump.sql
+          # Import to Testing 3 DB
+          - mysql -h $RDS_DEST_HOST_TESTING_3 -u $RDS_DEST_USER -p$RDS_DEST_PW ebdb < dump.sql
+pipelines:
+  default:
+      - step: *Tests
+  custom:
+    Testing-1:
+      - step: *Tests
+      - step:
+          <<: *Build-deploy
+          name: Deploy to Testing 1
+          deployment: testing
+          trigger: manual
+      - step: *Reset-DB-1
+    Testing-2:
+      - step: *Tests
+      - step:
+          <<: *Build-deploy
+          name: Deploy to Testing 2
+          deployment: testing-2
+          trigger: manual
+      - step: *Reset-DB-2
+    Testing-3:
+      - step: *Tests
+      - step:
+          <<: *Build-deploy
+          name: Deploy to Testing 3
+          deployment: testing-3
+          trigger: manual
+      - step: *Reset-DB-3
+  branches:
+    master:
+      - step: *Tests
+      - step:
+          <<: *Build-deploy
+          name: Deploy to Production (Coordinate)
+          deployment: production
+          trigger: automatic
+    release:
+      - step: *Tests
+      - step:
+          <<: *Build-deploy
+          name: Deploy to Production (FSSG)
+          deployment: production-fssg
+          trigger: automatic
+    develop:
+      - step: *Tests
+      - step:
+          <<: *Build-deploy
+          name: Deploy to Staging
+          deployment: staging
+          trigger: automatic

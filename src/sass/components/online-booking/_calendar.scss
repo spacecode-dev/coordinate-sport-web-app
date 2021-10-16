@@ -1,0 +1,112 @@
+.calendar {
+	margin-top:rem-calc(30);
+	.month-nav {
+		padding:rem-calc(10) 0;
+		h2 {
+			margin:0;
+		}
+		.prev, .next {
+			display: block;
+			i {
+				position: relative;
+				left:0;
+				transition: left .25s;
+			}
+			&:hover, &:focus {
+				color:$black;
+				i {
+					transition: left .25s;
+				}
+				&.prev {
+					i {
+						left:rem-calc(-3);
+					}
+				}
+				&.next {
+					i {
+						left:rem-calc(3);
+					}
+				}
+			}
+		}
+	}
+	.SimpleCalendar {
+		width:100%;
+		th, td {
+			width:14.28%;
+			vertical-align: top;
+			border-top:rem-calc(1) solid $light-grey;
+			border-bottom:rem-calc(1) solid $light-grey;
+		}
+		th {
+			text-transform: uppercase;
+			font-weight: $font-weight-normal;
+			padding:rem-calc(10) 0;
+			text-align: center;
+		}
+		td {
+			transition:background-color .25s;
+			&.has-events {
+				time {
+					background:$black;
+					color:$white;
+				}
+				&:hover {
+					time {
+						background:$black;
+					}
+				}
+			}
+			@media (min-width: $screen-sm-min) {
+				height: rem-calc(100);
+			}
+			@media (min-width: $screen-md-min) {
+				height: rem-calc(150);
+			}
+			&:hover {
+				background:$light-grey;
+				transition:background-color .25s;
+				time {
+					background:$mid-grey;
+					transition:background-color .25s;
+				}
+			}
+			time {
+				display: flex;
+				justify-content:center;
+				align-items:center;
+				background:$light-grey;
+				text-align: center;
+				transition:background-color .25s;
+				a {
+					display: block;
+					text-decoration: none;
+					width:100%;
+					cursor: default;
+					color:$white;
+				}
+				@media (max-width: $screen-xs-max) {
+					height:rem-calc(40);
+					a {
+						cursor: pointer;
+					}
+				}
+			}
+			.event {
+				padding:rem-calc(4);
+				font-size:rem-calc(12);
+				line-height: rem-calc(14);
+				display: none;
+				@media (min-width: $screen-sm-min) {
+					display: block;
+				}
+			}
+			&.SCprefix, &.SCsuffix {
+				background: $lighter-grey;
+				&:hover {
+					background: $lighter-grey;
+				}
+			}
+		}
+	}
+}

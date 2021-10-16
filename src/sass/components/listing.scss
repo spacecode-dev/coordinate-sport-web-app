@@ -1,0 +1,64 @@
+.table{
+	tbody{
+		tr{
+			&:first-child{
+				td .participant-club{
+					border-width: 0 0 0 1px;
+				}
+			}
+			td .participant-club{
+				display: flex;
+				border-width: 1px 0 0 1px;
+				.profile_pic {
+					width: 100%;
+					max-width: 50px;
+					height: 50px;
+					display: flex;
+					border-radius: 5px;
+					flex-direction: column;
+					justify-content: center;
+					overflow-y: hidden;
+					margin-right: 8px;
+					img{
+						border-radius: 4px;
+						width: 100%;
+						height: auto;
+					}
+				}
+				$social: (
+					'1': #00acec,
+					'2': #f8a326,
+					'3': #f34541,
+					'4': #49bf67,
+					'5': #9564e2,
+					'6': #00acec,
+					'7': #f8a326,
+					'8': #f34541,
+					'9': #49bf67,
+					'0': #9564e2,
+				);
+				.img-container{
+					flex-shrink: 0;
+					width: 50px;
+					height: 50px;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					font-size: 20px;
+					font-weight: 500;
+					text-transform: uppercase;
+					margin-right: 8px;
+					@each $number, $color in $social {
+						// selector based on href name
+						&.bg-random-#{$number}{
+							background-color: rgba($color, .2);
+							color: $color;
+						}
+					}
+					border-radius: 4px;
+				}
+			}
+
+		}
+	}
+}
